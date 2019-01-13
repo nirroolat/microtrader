@@ -20,6 +20,7 @@ pipeline {
       steps {
         container('gradle') {
           sh "gradle clean build"
+          sh "npm install bower --global"
           sh "export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml"
           sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:$PREVIEW_VERSION"
           dir('./charts/preview') {
