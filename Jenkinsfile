@@ -45,6 +45,7 @@ pipeline {
           // so we can retrieve the version in later steps
           sh "echo \$(jx-release-version) > VERSION"
           sh "jx step tag --version \$(cat VERSION)"
+          sh "yum install nodejs -y"
           sh "/bin/npm install bower --global"
           sh "gradle clean build"
           sh "export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml"
