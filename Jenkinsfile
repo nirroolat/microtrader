@@ -48,7 +48,8 @@ pipeline {
           sh "yum install nodejs -y"
           sh "/bin/npm install bower --global"
           sh "gradle clean build"
-          sh "export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml"
+          sh "export VERSION=`cat VERSION`"
+          #sh "skaffold build -f skaffold.yaml"
           sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:\$(cat VERSION)"
         }
       }

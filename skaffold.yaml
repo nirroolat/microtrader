@@ -5,7 +5,7 @@ build:
     envTemplate:
       template: "{{.DOCKER_REGISTRY}}/nirroolat/microtrader:{{.VERSION}}"
   artifacts:
-  - imageName: changeme
+  - imageName: microtrader
     workspace: .
     docker: {}
   local: {}
